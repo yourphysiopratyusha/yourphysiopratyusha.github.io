@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Physio Pratyusha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#009eb5', // Teal
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white font-sans text-gray-800">
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-primary">Your Physio Pratyusha</div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <div class="flex items-center space-x-8">
+                        <a href="#home" class="hover:text-primary transition-colors py-2">Home</a>
+                        <a href="#services" class="hover:text-primary transition-colors py-2">Services</a>
+                        <a href="#about" class="hover:text-primary transition-colors py-2">About</a>
+                        <a href="#reviews" class="hover:text-primary transition-colors py-2">Reviews</a>
+                        <a href="#contact" class="hover:text-primary transition-colors py-2">Contact</a>
+                    </div>
+                    <a href="#book" class="bg-primary text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">Book Appointment</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-800 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="min-h-[80vh] flex items-center justify-center bg-primary pt-16">
+            <div class="container mx-auto px-6 text-center text-white">
+                <!-- <img src="https://placehold.co/600x400/FFFFFF/009eb5?text=Welcome" alt="Welcome" class="rounded-lg shadow-xl mb-8 mx-auto"> -->
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome to Pratyusha's Physiotherapy</h1>
+                <p class="text-xl mb-6">Professional physiotherapy services in Ottawa</p>
+                <a href="#book" class="bg-white text-primary px-8 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">Book Your Appointment</a>
+            </div>
+        </section>
+
+        <section id="services" class="py-12 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-8 text-primary">Our Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2">
+                        <img src="https://placehold.co/400x300/009eb5/FFFFFF?text=Manual+Therapy" alt="Manual Therapy" class="rounded-lg mb-4">
+                        <div class="text-3xl text-primary mb-4">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-primary">Manual Therapy</h3>
+                        <p class="text-gray-600">Expert hands-on treatment to improve mobility and reduce pain.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2">
+                        <img src="https://placehold.co/400x300/009eb5/FFFFFF?text=Exercise+Therapy" alt="Exercise Therapy" class="rounded-lg mb-4">
+                        <div class="text-3xl text-primary mb-4">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-primary">Exercise Therapy</h3>
+                        <p class="text-gray-600">Customized exercise programs for rehabilitation and prevention.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2">
+                        <img src="https://placehold.co/400x300/009eb5/FFFFFF?text=Sports+Rehab" alt="Sports Rehabilitation" class="rounded-lg mb-4">
+                        <div class="text-3xl text-primary mb-4">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-primary">Sports Rehabilitation</h3>
+                        <p class="text-gray-600">Specialized care for athletes and sports-related injuries.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-12 bg-primary">
+            <div class="container mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center text-white">
+                    <img src="profile-image.jpg" alt="Pratyusha" class="rounded-full w-48 h-48 mx-auto mb-6 shadow-xl object-cover">
+                    <h2 class="text-3xl font-bold mb-6">About Me</h2>
+                    <p class="text-lg mb-4">I am Pratyusha, a dedicated physiotherapist based in Ottawa. With over 13 years of experience in the field, I am committed to helping my patients achieve their optimal physical health and well-being.</p>
+                    <p class="text-lg">My approach combines evidence-based practice with personalized care to ensure the best outcomes for each patient.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews" class="py-12 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-8 text-primary">What Our Clients Say</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="https://placehold.co/100x100/009eb5/FFFFFF?text=Client+1" alt="Client 1" class="rounded-full w-12 h-12 mr-4">
+                            <div>
+                                <h4 class="font-semibold text-primary">Sarah Johnson</h4>
+                                <div class="text-primary">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"Pratyusha's expertise and personalized approach helped me recover from my sports injury faster than expected. Highly recommended!"</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="https://placehold.co/100x100/009eb5/FFFFFF?text=Client+2" alt="Client 2" class="rounded-full w-12 h-12 mr-4">
+                            <div>
+                                <h4 class="font-semibold text-primary">Michael Chen</h4>
+                                <div class="text-primary">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"The exercise therapy program was tailored perfectly to my needs. I've seen significant improvement in my mobility."</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="https://placehold.co/100x100/009eb5/FFFFFF?text=Client+3" alt="Client 3" class="rounded-full w-12 h-12 mr-4">
+                            <div>
+                                <h4 class="font-semibold text-primary">Emily Rodriguez</h4>
+                                <div class="text-primary">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"Professional, caring, and knowledgeable. Pratyusha's manual therapy sessions have been life-changing for my chronic pain."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-12 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-8 text-primary">Contact Us</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg text-center">
+                        <div class="text-3xl text-primary mb-4">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <p class="text-lg">Ottawa, ON</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg text-center">
+                        <div class="text-3xl text-primary mb-4">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <p class="text-lg">Your Phone Number</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg text-center">
+                        <div class="text-3xl text-primary mb-4">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <p class="text-lg">Your Email</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="book" class="py-12 bg-primary">
+            <div class="container mx-auto px-6 text-center text-white">
+                <h2 class="text-3xl font-bold mb-6">Book an Appointment</h2>
+                <p class="text-lg mb-6">Schedule your appointment through Jane App</p>
+                <a href="https://your-jane-app-link.com" class="bg-white text-primary px-8 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50" target="_blank">Book Now</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-primary text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Pratyusha Physiotherapy</h3>
+                    <p>Professional care for your physical well-being</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-gray-200 transition-colors">Home</a></li>
+                        <li><a href="#services" class="hover:text-gray-200 transition-colors">Services</a></li>
+                        <li><a href="#about" class="hover:text-gray-200 transition-colors">About</a></li>
+                        <li><a href="#reviews" class="hover:text-gray-200 transition-colors">Reviews</a></li>
+                        <li><a href="#contact" class="hover:text-gray-200 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-gray-200 transition-colors"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl hover:text-gray-200 transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl hover:text-gray-200 transition-colors"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-white/20 text-center">
+                <p>&copy; 2024 Pratyusha Physiotherapy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
