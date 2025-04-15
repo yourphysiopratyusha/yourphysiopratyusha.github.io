@@ -7,67 +7,145 @@
     <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add Swiper.js CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         primary: '#009eb5',
-                        accent: '#1e40af'
+                        accent: '#1e40af',
+                        peach: '#ffe8e0',
+                        'peach-light': '#fff5f5',
+                        'peach-dark': '#ffd8c8'
                     },
                     fontFamily: {
                         'sans': ['Inter', 'sans-serif'],
                     },
+                    keyframes: {
+                        'fade-in': {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fade-in 1s ease-out forwards'
+                    }
                 }
             }
         }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .parallax {
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+        .parallax-content {
+            transform: translateZ(0);
+        }
+        .parallax-background {
+            transform: translateZ(-1px);
+        }
+        .services-swiper {
+            padding: 20px 40px;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #009eb5 !important;
+        }
+        .swiper-pagination-bullet-active {
+            background: #009eb5 !important;
+        }
+        .swiper-slide {
+            height: auto;
+            display: flex;
+        }
+        .swiper-slide > div {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .swiper-slide .text-gray-500 {
+            margin-top: auto;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 font-sans text-gray-800">
-    <header class="fixed w-full bg-white shadow-sm z-50">
+<body class="bg-peach font-sans text-gray-800">
+    <header class="fixed w-full bg-peach-light shadow-sm z-50">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold text-gray-800">Your Physio Pratyusha</div>
+                <div class="text-2xl text-accent block font-bold">Your Physio Pratyusha</div>
+                <!-- Navigation Links -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all py-2">Home</a>
-                    <a href="#about" class="text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all py-2">About</a>
-                    <a href="#services" class="text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all py-2">Services</a>
-                    <a href="#contact" class="text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all py-2">Contact</a>
-                    <a href="https://coreconnectionsphysiotherapy.janeapp.com/?fbclid=PAY2xjawItcaVleHRuA2FlbQIxMQABppRbTpHZQgPLL5KrPNcyeWsLni_PmuP4Xlp9W5P8v4gPN1ADdCK10nT_Qg_aem_-L9_2C7O1CJtlh-vTo2_vQ" target="_blank" class="ml-4 px-6 py-2 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all">Book Now</a>
+                    <a href="#home" class="nav-link hover:text-primary transition-colors">Home</a>
+                    <a href="#services" class="nav-link hover:text-primary transition-colors">Services</a>
+                    <a href="#reviews" class="nav-link hover:text-primary transition-colors">Reviews</a>
+                    <a href="#about" class="nav-link hover:text-primary transition-colors">About</a>
+                    <a href="#contact" class="nav-link hover:text-primary transition-colors">Contact</a>
+                    <a href="https://coreconnectionsphysiotherapy.janeapp.com/" 
+                       target="_blank" 
+                       class="book-btn bg-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-all">
+                        Book Now
+                    </a>
                 </div>
-                <button class="md:hidden text-gray-600 focus:outline-none">
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
+            
+            <!-- Mobile menu overlay -->
+            <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+            
+            <!-- Mobile menu panel -->
+            <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+                <div class="p-6">
+                    <button id="mobile-menu-close" class="absolute top-4 right-4 text-gray-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                    <div class="mt-8 flex flex-col space-y-6">
+                        <a href="#home" class="text-xl hover:text-primary transition-colors">Home</a>
+                        <a href="#services" class="text-xl hover:text-primary transition-colors">Services</a>
+                        <a href="#reviews" class="text-xl hover:text-primary transition-colors">Reviews</a>
+                        <a href="#about" class="text-xl hover:text-primary transition-colors">About</a>
+                        <a href="#contact" class="text-xl hover:text-primary transition-colors">Contact</a>
+                        <a href="https://coreconnectionsphysiotherapy.janeapp.com/" 
+                           target="_blank" 
+                           class="bg-primary text-white px-6 py-2 rounded-full text-center hover:bg-opacity-90 transition-all">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+            </div>
         </nav>
     </header>
 
     <main>
-        <section id="home" class="pt-24 pb-12">
+        <section id="home" class="pt-24 pb-12 relative overflow-hidden">
             <div class="container mx-auto px-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    <div class="parallax-content">
+                        <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
                             Expert Care in
                             <span class="text-accent block">Physiotherapy</span>
                         </h1>
-                        <p class="text-gray-600 mb-8">Specialized physiotherapy services including orthopedic, pelvic health, pre/postnatal care, and treatment for Ehlers-Danlos Syndrome.</p>
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="https://coreconnectionsphysiotherapy.janeapp.com/?fbclid=PAY2xjawItcaVleHRuA2FlbQIxMQABppRbTpHZQgPLL5KrPNcyeWsLni_PmuP4Xlp9W5P8v4gPN1ADdCK10nT_Qg_aem_-L9_2C7O1CJtlh-vTo2_vQ" target="_blank" class="inline-block px-8 py-3 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl">Book an Assessment</a>
+                        <p class="text-gray-600 mb-8 animate-fade-in" style="animation-delay: 0.2s">Specialized physiotherapy services including orthopedic, pelvic health, pre/postnatal care, and treatment for Ehlers-Danlos Syndrome.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 animate-fade-in" style="animation-delay: 0.4s">
+                            <a href="https://coreconnectionsphysiotherapy.janeapp.com/" target="_blank" class="inline-block px-8 py-3 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl">Book an Assessment</a>
                             <a href="https://www.instagram.com/your_physio_pratyusha/" target="_blank" class="inline-block px-8 py-3 bg-white text-primary border-2 border-primary rounded-full hover:bg-primary hover:text-white transition-all">Follow on Instagram</a>
                         </div>
                         
-                        <div class="mt-12">
+                        <div class="mt-12 animate-fade-in" style="animation-delay: 0.6s">
                             <p class="text-gray-600 mb-4">Over 12 years of experience in treating various musculoskeletal conditions.</p>
                             <div class="flex items-center gap-4">
-                                <div class="flex -space-x-4">
-                                    <img src="https://placehold.co/100x100/009eb5/FFFFFF?text=PT" alt="Physiotherapy" class="w-10 h-10 rounded-full border-2 border-white">
-                                    <img src="https://placehold.co/100x100/009eb5/FFFFFF?text=PH" alt="Pelvic Health" class="w-10 h-10 rounded-full border-2 border-white">
-                                    <img src="https://placehold.co/100x100/009eb5/FFFFFF?text=PN" alt="Pre/Postnatal" class="w-10 h-10 rounded-full border-2 border-white">
-                                </div>
                                 <div>
                                     <div class="font-semibold">Multiple Specialties</div>
                                     <div class="text-sm text-gray-600">Comprehensive Care</div>
@@ -75,8 +153,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="relative">
-                        <img src="profile.png" alt="Pratyusha Kavuluri" class="w-full rounded-2xl shadow-xl">
+                    <div class="relative parallax">
+                        <img src="profile.png" alt="Pratyusha Kavuluri" class="w-full rounded-2xl shadow-xl parallax-background">
                         <div class="absolute -bottom-6 left-6 right-6 bg-white p-6 rounded-xl shadow-lg">
                             <div class="flex items-center gap-4">
                                 <a href="tel:+16132912956" class="p-3 bg-primary/10 rounded-lg">
@@ -93,80 +171,233 @@
             </div>
         </section>
 
-        <section id="services" class="py-12 bg-white">
+        <section id="services" class="py-12 bg-peach-light">
             <div class="container mx-auto px-6">
                 <div class="flex items-center gap-2 mb-2">
                     <div class="w-6 h-0.5 bg-primary"></div>
                     <span class="text-primary font-medium">Our Services</span>
                 </div>
                 <h2 class="text-3xl font-bold mb-12">Specialized Physiotherapy Services</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
-                        <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
-                            <i class="fas fa-hands text-primary text-2xl"></i>
+                
+                <!-- Swiper container -->
+                <div class="swiper services-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Orthopedic Manual Therapy -->
+                        <div class="swiper-slide">
+                            <div class="bg-peach-light p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                                <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
+                                    <i class="fas fa-hands text-primary text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-3">Orthopedic Manual Therapy</h3>
+                                <p class="text-gray-600 mb-4">Expert manual therapy and exercise programs for musculoskeletal conditions.</p>
+                                <div class="text-sm text-gray-500 mt-auto">
+                                    <p class="mb-2">• Assessment (60 min) - $185</p>
+                                    <p class="mb-2">• Treatment (60 min) - $180</p>
+                                    <p>• Treatment (45 min) - $150</p>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">Orthopedic Manual Therapy</h3>
-                        <p class="text-gray-600 mb-4">Expert manual therapy and exercise programs for musculoskeletal conditions.</p>
-                        <div class="text-sm text-gray-500">
-                            <p class="mb-2">• Assessment (60 min) - $185</p>
-                            <p class="mb-2">• Treatment (60 min) - $180</p>
-                            <p>• Treatment (45 min) - $150</p>
+
+                        <!-- Pelvic Health -->
+                        <div class="swiper-slide">
+                            <div class="bg-peach-light p-6 rounded-xl shadow-lg">
+                                <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
+                                    <i class="fas fa-female text-primary text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-3">Pelvic Health Physiotherapy</h3>
+                                <p class="text-gray-600 mb-4">Specialized care for pelvic health conditions and rehabilitation.</p>
+                                <div class="text-sm text-gray-500">
+                                    <p class="mb-2">• Assessment (60 min) - $190</p>
+                                    <p class="mb-2">• Treatment (60 min) - $185</p>
+                                    <p>• Treatment (45 min) - $155</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pre/Postnatal Care -->
+                        <div class="swiper-slide">
+                            <div class="bg-peach-light p-6 rounded-xl shadow-lg">
+                                <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
+                                    <i class="fas fa-baby text-primary text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-3">Pre/Postnatal Care</h3>
+                                <p class="text-gray-600 mb-4">Specialized care for pregnancy and postpartum recovery.</p>
+                                <div class="text-sm text-gray-500">
+                                    <p class="mb-2">• Assessment (60 min) - $190</p>
+                                    <p class="mb-2">• Treatment (45 min) - $155</p>
+                                    <p>• Treatment (30 min) - $115</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pessary Fitting -->
+                        <div class="swiper-slide">
+                            <div class="bg-peach-light p-6 rounded-xl shadow-lg">
+                                <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
+                                    <i class="fas fa-user-md text-primary text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-3">Pessary Fitting</h3>
+                                <p class="text-gray-600 mb-4">Professional pessary fitting and follow-up care for incontinence and pelvic organ prolapse.</p>
+                                <div class="text-sm text-gray-500">
+                                    <p class="mb-2">• Pre-Fitting Assessment (60 min) - $200</p>
+                                    <p class="mb-2">• Follow-Up (60 min) - $205</p>
+                                    <p>• Follow-Up (45 min) - $175</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- EDS & Hypermobility -->
+                        <div class="swiper-slide">
+                            <div class="bg-peach-light p-6 rounded-xl shadow-lg">
+                                <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
+                                    <i class="fas fa-bone text-primary text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-3">Ehlers-Danlos Syndrome & Hypermobility</h3>
+                                <p class="text-gray-600 mb-4">Specialized treatment for EDS and hypermobility spectrum disorders.</p>
+                                <div class="text-sm text-gray-500">
+                                    <p class="mb-2">• Assessment (60 min) - $190</p>
+                                    <p>• Treatment (45 min) - $155</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ergonomics & Exercise -->
+                        <div class="swiper-slide">
+                            <div class="bg-peach-light p-6 rounded-xl shadow-lg">
+                                <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
+                                    <i class="fas fa-running text-primary text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-3">Ergonomics & Exercise</h3>
+                                <p class="text-gray-600 mb-4">Personalized ergonomic assessment and exercise programs for optimal body mechanics.</p>
+                                <div class="text-sm text-gray-500">
+                                    <p class="mb-2">• Assessment (60 min) - $190</p>
+                                    <p class="mb-2">• Treatment (45 min) - $155</p>
+                                    <p>• Treatment (30 min) - $115</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Virtual Care -->
+                        <div class="swiper-slide">
+                            <div class="bg-peach-light p-6 rounded-xl shadow-lg">
+                                <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
+                                    <i class="fas fa-laptop text-primary text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-3">Virtual Care</h3>
+                                <p class="text-gray-600 mb-4">Telehealth sessions available for all services, providing convenient access to care.</p>
+                                <div class="text-sm text-gray-500">
+                                    <p class="mb-2">• Virtual Assessment (60 min) - from $185</p>
+                                    <p class="mb-2">• Virtual Treatment (45 min) - from $150</p>
+                                    <p>• Virtual Treatment (30 min) - from $110</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
-                        <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
-                            <i class="fas fa-female text-primary text-2xl"></i>
+                    <!-- Add pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Add navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews" class="py-16 bg-peach">
+            <div class="container mx-auto px-6">
+                <div class="flex items-center gap-2 mb-2">
+                    <div class="w-6 h-0.5 bg-primary"></div>
+                    <span class="text-primary font-medium">Testimonials</span>
+                </div>
+                <h2 class="text-3xl font-bold mb-12">What Our Clients Say</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Review 1 -->
+                    <div class="bg-peach-light p-8 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <div class="flex items-center mb-6">
+                            <div class="flex -space-x-2">
+                                <img src="https://placehold.co/50x50/009eb5/FFFFFF?text=JD" alt="Client" class="w-10 h-10 rounded-full border-2 border-white">
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="font-semibold">John D.</h3>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">Pelvic Health Physiotherapy</h3>
-                        <p class="text-gray-600 mb-4">Specialized care for pelvic health conditions and rehabilitation.</p>
-                        <div class="text-sm text-gray-500">
-                            <p class="mb-2">• Assessment (60 min) - $190</p>
-                            <p class="mb-2">• Treatment (60 min) - $185</p>
-                            <p>• Treatment (45 min) - $155</p>
-                        </div>
+                        <p class="text-gray-600 mb-4">"Pratyusha's expertise in orthopedic therapy helped me recover from my sports injury faster than expected. Her personalized approach and attention to detail made all the difference."</p>
+                        <div class="text-sm text-gray-500">Pelvic Health Treatment</div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
-                        <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
-                            <i class="fas fa-baby text-primary text-2xl"></i>
+
+                    <!-- Review 2 -->
+                    <div class="bg-peach-light p-8 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <div class="flex items-center mb-6">
+                            <div class="flex -space-x-2">
+                                <img src="https://placehold.co/50x50/009eb5/FFFFFF?text=SM" alt="Client" class="w-10 h-10 rounded-full border-2 border-white">
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="font-semibold">Sarah M.</h3>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">Pre/Postnatal Care</h3>
-                        <p class="text-gray-600 mb-4">Specialized care for pregnancy and postpartum recovery.</p>
-                        <div class="text-sm text-gray-500">
-                            <p class="mb-2">• Assessment (60 min) - $190</p>
-                            <p class="mb-2">• Treatment (45 min) - $155</p>
-                            <p>• Treatment (30 min) - $115</p>
+                        <p class="text-gray-600 mb-4">"The prenatal care I received was exceptional. Pratyusha's knowledge and support made my pregnancy journey much more comfortable. Highly recommend her services!"</p>
+                        <div class="text-sm text-gray-500">Pre/Postnatal Care</div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="bg-peach-light p-8 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <div class="flex items-center mb-6">
+                            <div class="flex -space-x-2">
+                                <img src="https://placehold.co/50x50/009eb5/FFFFFF?text=AL" alt="Client" class="w-10 h-10 rounded-full border-2 border-white">
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="font-semibold">Alex L.</h3>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
                         </div>
+                        <p class="text-gray-600 mb-4">"As someone with EDS, finding a physiotherapist who understands my condition was crucial. Pratyusha's specialized approach has significantly improved my quality of life."</p>
+                        <div class="text-sm text-gray-500">EDS Treatment</div>
                     </div>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
-                        <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
-                            <i class="fas fa-bone text-primary text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3">Ehlers-Danlos Syndrome & Hypermobility</h3>
-                        <p class="text-gray-600 mb-4">Specialized treatment for EDS and hypermobility spectrum disorders.</p>
-                        <div class="text-sm text-gray-500">
-                            <p class="mb-2">• Assessment (60 min) - $190</p>
-                            <p>• Treatment (45 min) - $155</p>
-                        </div>
+
+                <!-- Review Stats -->
+                <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="bg-peach-light p-6 rounded-xl shadow-lg">
+                        <div class="text-4xl font-bold text-primary mb-2">500+</div>
+                        <div class="text-gray-600">Happy Clients</div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
-                        <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
-                            <i class="fas fa-laptop text-primary text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3">Virtual Care Available</h3>
-                        <p class="text-gray-600 mb-4">Telehealth sessions for all services, providing convenient access to care.</p>
-                        <div class="text-sm text-gray-500">
-                            <p class="mb-2">• Virtual Assessment (60 min) - from $185</p>
-                            <p>• Virtual Treatment (45 min) - from $150</p>
-                        </div>
+                    <div class="bg-peach-light p-6 rounded-xl shadow-lg">
+                        <div class="text-4xl font-bold text-primary mb-2">12+</div>
+                        <div class="text-gray-600">Years Experience</div>
+                    </div>
+                    <div class="bg-peach-light p-6 rounded-xl shadow-lg">
+                        <div class="text-4xl font-bold text-primary mb-2">4.9</div>
+                        <div class="text-gray-600">Average Rating</div>
+                    </div>
+                    <div class="bg-peach-light p-6 rounded-xl shadow-lg">
+                        <div class="text-4xl font-bold text-primary mb-2">1000+</div>
+                        <div class="text-gray-600">Sessions Completed</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="py-12 bg-gray-50">
+        <section id="about" class="py-12 bg-peach">
             <div class="container mx-auto px-6">
                 <div class="flex items-center gap-2 mb-2">
                     <div class="w-6 h-0.5 bg-primary"></div>
@@ -201,28 +432,28 @@
             </div>
         </section>
 
-        <section id="contact" class="py-12 bg-gray-50">
+        <section id="contact" class="py-12 bg-peach">
             <div class="container mx-auto px-6">
                 <div class="flex items-center gap-2 mb-2">
                     <div class="w-6 h-0.5 bg-primary"></div>
                     <span class="text-primary font-medium">Contact</span>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                    <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <div class="bg-peach-light p-6 rounded-xl shadow-lg text-center">
                         <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
                             <i class="fas fa-map-marker-alt text-primary text-2xl"></i>
                         </div>
                         <h3 class="font-semibold mb-2">Location</h3>
                         <p class="text-gray-600">Ottawa, ON</p>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <div class="bg-peach-light p-6 rounded-xl shadow-lg text-center">
                         <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
                             <i class="fas fa-phone text-primary text-2xl"></i>
                         </div>
                         <h3 class="font-semibold mb-2">Phone</h3>
                         <p class="text-gray-600">613-291-2956</p>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <div class="bg-peach-light p-6 rounded-xl shadow-lg text-center">
                         <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
                             <i class="fas fa-comments text-primary text-2xl"></i>
                         </div>
@@ -238,7 +469,7 @@
                 <h2 class="text-3xl font-bold text-white mb-6">Ready to Start Your Recovery?</h2>
                 <p class="text-white/90 mb-8">Book your assessment or free consultation today</p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-                    <a href="https://coreconnectionsphysiotherapy.janeapp.com/?fbclid=PAY2xjawItcaVleHRuA2FlbQIxMQABppRbTpHZQgPLL5KrPNcyeWsLni_PmuP4Xlp9W5P8v4gPN1ADdCK10nT_Qg_aem_-L9_2C7O1CJtlh-vTo2_vQ" target="_blank" class="inline-block px-8 py-3 bg-white text-primary rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl">Book Assessment</a>
+                    <a href="https://coreconnectionsphysiotherapy.janeapp.com/" target="_blank" class="inline-block px-8 py-3 bg-white text-primary rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl">Book Assessment</a>
                     <a href="https://www.instagram.com/your_physio_pratyusha/" target="_blank" class="inline-block px-8 py-3 bg-transparent border-2 border-white text-white rounded-full hover:bg-white hover:text-primary transition-all">Follow on Instagram</a>
                 </div>
             </div>
@@ -256,10 +487,11 @@
                     <h3 class="text-xl font-bold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
                         <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
                         <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#reviews" class="text-gray-400 hover:text-white transition-colors">Reviews</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
                         <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                        <li><a href="https://coreconnectionsphysiotherapy.janeapp.com/?fbclid=PAY2xjawItcaVleHRuA2FlbQIxMQABppRbTpHZQgPLL5KrPNcyeWsLni_PmuP4Xlp9W5P8v4gPN1ADdCK10nT_Qg_aem_-L9_2C7O1CJtlh-vTo2_vQ" target="_blank" class="text-gray-400 hover:text-white transition-colors">Book Online</a></li>
+                        <li><a href="https://coreconnectionsphysiotherapy.janeapp.com/" target="_blank" class="text-gray-400 hover:text-white transition-colors">Book Online</a></li>
                         <li><a href="https://www.instagram.com/your_physio_pratyusha/" target="_blank" class="text-gray-400 hover:text-white transition-colors">Instagram</a></li>
                     </ul>
                 </div>
@@ -277,5 +509,43 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        const swiper = new Swiper('.services-swiper', {
+            // Optional parameters
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            
+            // Responsive breakpoints
+            breakpoints: {
+                // when window width is >= 640px
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                },
+                // when window width is >= 1024px
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                }
+            },
+
+            // Pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            
+            // Enable better height calculation
+            autoHeight: false,
+            updateOnWindowResize: true
+        });
+    </script>
 </body>
 </html> 

@@ -1,50 +1,47 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu functionality
-    const hamburger = document.querySelector('.md\\:hidden button');
-    const mobileMenu = document.createElement('div');
-    mobileMenu.className = 'fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out';
-    mobileMenu.innerHTML = `
-        <div class="flex justify-end p-6">
-            <button class="text-text focus:outline-none">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
-        </div>
-        <div class="flex flex-col items-center space-y-8 p-6">
-            <a href="#home" class="text-2xl hover:text-primary transition-colors">Home</a>
-            <a href="#services" class="text-2xl hover:text-primary transition-colors">Services</a>
-            <a href="#about" class="text-2xl hover:text-primary transition-colors">About</a>
-            <a href="#contact" class="text-2xl hover:text-primary transition-colors">Contact</a>
-            <a href="#book" class="bg-primary text-white px-6 py-2 rounded-full text-xl hover:bg-opacity-90 transition-all">Book Appointment</a>
-        </div>
-    `;
-    document.body.appendChild(mobileMenu);
+    // Mobile menu elements
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
 
-    hamburger.addEventListener('click', () => {
-        mobileMenu.classList.remove('translate-x-full');
-    });
+    // Toggle mobile menu
+    function toggleMobileMenu(show) {
+        if (show) {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenuOverlay.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        } else {
+            mobileMenu.classList.add('translate-x-full');
+            mobileMenuOverlay.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+    }
 
-    const closeButton = mobileMenu.querySelector('button');
-    closeButton.addEventListener('click', () => {
-        mobileMenu.classList.add('translate-x-full');
-    });
+    // Event listeners for mobile menu
+    mobileMenuButton.addEventListener('click', () => toggleMobileMenu(true));
+    mobileMenuClose.addEventListener('click', () => toggleMobileMenu(false));
+    mobileMenuOverlay.addEventListener('click', () => toggleMobileMenu(false));
 
     // Close mobile menu when clicking a link
     const mobileLinks = mobileMenu.querySelectorAll('a');
     mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('translate-x-full');
-        });
+        link.addEventListener('click', () => toggleMobileMenu(false));
     });
 
-    // Smooth scrolling for navigation links
+    // Enhanced smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
                 });
             }
         });
@@ -52,9 +49,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add active class to navigation links based on scroll position
     const sections = document.querySelectorAll('section');
-    const navItems = document.querySelectorAll('.md\\:flex a, .fixed a');
+    const navItems = document.querySelectorAll('.nav-link, #mobile-menu a[href^="#"]');
 
+    // Parallax effect for hero section
+    const heroSection = document.querySelector('#home');
+    const heroImage = heroSection.querySelector('img');
+    const heroContent = heroSection.querySelector('div:first-child');
+
+    // Intersection Observer for parallax and animations
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-fade-in');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all sections for fade-in animation
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('opacity-0', 'transition-opacity', 'duration-1000');
+        observer.observe(section);
+    });
+
+    // Parallax scroll effect
     window.addEventListener('scroll', () => {
+        // Update active navigation
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -70,5 +95,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 item.classList.add('text-primary');
             }
         });
+
+        // Parallax effect for hero section
+        if (heroImage && heroContent) {
+            const scrolled = window.pageYOffset;
+            heroImage.style.transform = `translateY(${scrolled * 0.1}px)`;
+            heroContent.style.transform = `translateY(${scrolled * 0.05}px)`;
+        }
     });
 }); 
