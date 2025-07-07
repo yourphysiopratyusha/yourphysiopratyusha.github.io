@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,14 +44,17 @@
             transform-style: preserve-3d;
             will-change: transform;
         }
+
         .parallax-content {
             transform: translateZ(0);
         }
+
         .parallax-background {
             transform: translateZ(-1px);
         }
     </style>
 </head>
+
 <body class="bg-mint font-sans text-gray-800">
     <header class="fixed w-full bg-white shadow-sm z-50">
         <nav class="container mx-auto px-6 py-4">
@@ -63,27 +67,29 @@
                     <a href="index.html#reviews" class="nav-link hover:text-primary transition-colors">Reviews</a>
                     <a href="about.html" class="nav-link hover:text-primary transition-colors">About</a>
                     <a href="index.html#contact" class="nav-link hover:text-primary transition-colors">Contact</a>
-                    <a href="https://coreconnectionsphysiotherapy.janeapp.com/" 
-                       target="_blank" 
-                       class="book-btn bg-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-all">
+                    <a href="https://coreconnectionsphysiotherapy.janeapp.com/" target="_blank"
+                        class="book-btn bg-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-all">
                         Book Now
                     </a>
                 </div>
                 <!-- Mobile menu button -->
                 <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
             <!-- Mobile menu overlay -->
             <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
             <!-- Mobile menu panel -->
-            <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+            <div id="mobile-menu"
+                class="fixed inset-y-0 right-0 w-64 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
                 <div class="p-6">
                     <button id="mobile-menu-close" class="absolute top-4 right-4 text-gray-600 focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
                     <div class="mt-8 flex flex-col space-y-6">
@@ -92,9 +98,8 @@
                         <a href="index.html#reviews" class="text-xl hover:text-primary transition-colors">Reviews</a>
                         <a href="about.html" class="text-xl hover:text-primary transition-colors">About</a>
                         <a href="index.html#contact" class="text-xl hover:text-primary transition-colors">Contact</a>
-                        <a href="https://coreconnectionsphysiotherapy.janeapp.com/" 
-                           target="_blank" 
-                           class="bg-primary text-white px-6 py-2 rounded-full text-center hover:bg-opacity-90 transition-all">
+                        <a href="https://coreconnectionsphysiotherapy.janeapp.com/" target="_blank"
+                            class="bg-primary text-white px-6 py-2 rounded-full text-center hover:bg-opacity-90 transition-all">
                             Book Now
                         </a>
                     </div>
@@ -110,29 +115,54 @@
                     <span class="text-primary font-medium">About Me</span>
                 </div>
                 <div class="grid items-center">
-                    <div>
-                        <h2 class="text-3xl font-bold mb-6">Experienced Healthcare Professional</h2>
-                        <p class="text-gray-600 mb-6">With over 12 years of experience, I specialize in treating various musculoskeletal conditions, pelvic health, and pre/postnatal care. My approach combines evidence-based practice with personalized treatment plans to ensure optimal outcomes for each patient.</p>
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-check text-primary"></i>
-                                </div>
-                                <span class="text-gray-700">Master's in Physiotherapy (M.PT)</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-check text-primary"></i>
-                                </div>
-                                <span class="text-gray-700">Bachelor's in Physiotherapy (B.PT)</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-check text-primary"></i>
-                                </div>
-                                <span class="text-gray-700">Specialized in Pelvic Health</span>
-                            </div>
+                    <div class="space-y-6 text-gray-700">
+                        <p>I have been a physiotherapist for more than 13 years and being the people person that I am, I
+                            truly love every single second of it! I am specialized in Pelvic Health, Orthopedics and
+                            Sports.</p>
+                        <p>I come from an athletic background having competed at national level in swimming and water
+                            polo. My dad being a professional soccer coach, I played a lot of soccer growing up which
+                            sparked my interest in helping athletes who are recovering from injuries that are limiting
+                            their potential.</p>
+                        <p>I am a published author and presenter at a number of international conferences. My research
+                            interests have included varicose veins in high level athletes, land-based versus water-based
+                            exercises in reducing pain and disability in patients with knee osteoarthritis, and core
+                            stability exercises on and off the Swiss Ball. I played an instrumental role in designing a
+                            novel ultrasound device that helps treat acute and chronic joint pain.</p>
+                        <p>Ever since becoming a mom, a longstanding curiosity about the connection between the pelvic
+                            floor and other musculoskeletal conditions, led me to pursue a specialization in treating
+                            pelvic floor disorders in all genders. As a mom myself, I understand how our bodies
+                            constantly evolve and how the demands shift as our babies grow and life moves forward. I
+                            strongly believe physiotherapy can be a valuable support in helping us navigate the physical
+                            challenges that come with each stage of motherhood.</p>
+                        <p>I love working with women in the peri, menopausal, and postmenopausal stages supporting their
+                            changing bodies with the right tools, movement strategies, and care tailored to each phase.
+                            Every stage brings its own challenges, and proper management can play a key role in helping
+                            you feel strong, supported, and more at ease in your body.</p>
+                        <p>With a robust understanding of orthopedics and sports, it gives me a deeper insight into
+                            treating my athletic pelvic health clients to understand the demands of their bodies in a
+                            peculiar way!</p>
+                        <p>Through my years of practice, I noticed people with hypermobile joints did not often respond
+                            to conventional manual or physiotherapy techniques which steered me to dive deeper into
+                            understanding their unique bodies. This led me to be a member of EDS- ECHO society
+                            (Ehlers-Danlos Syndrome -EDS and hypermobility spectrum disorders -HSD) and I've been
+                            helping hypermobile individuals overcome their health conditions for more than 4 years now.
+                        </p>
+                        <div>
+                            <span class="font-semibold">I hold additional certifications in the following areas:</span>
+                            <ul class="list-disc list-inside mt-2">
+                                <li>Pelvic Health solutions - Level I, II and III (Urinary incontinence, Pelvic pain
+                                    through trauma informed lens, Biopsychosocial aspects of pelvic health)</li>
+                                <li>Pessary Fitting - Prolapse and Incontinence.</li>
+                                <li>Functional Dry Needling</li>
+                                <li>Functional Movement Training</li>
+                                <li>Kinesiology Taping</li>
+                                <li>Cupping</li>
+                                <li>EDS ECHO (Ehlers-Danlos Syndrome and Hypermobility Spectrum Disorders)</li>
+                            </ul>
                         </div>
+                        <p>When I am not working, you can find me playing with my boy Nyrit, and trying new recipes! I
+                            also enjoy biking along the Ottawa river, dancing, travelling to off the beaten path
+                            destinations, and watching The Office on repeat!</p>
                     </div>
                 </div>
             </div>
@@ -143,18 +173,25 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div>
                     <h3 class="text-xl font-bold mb-4">Pratyusha Kavuluri</h3>
-                    <p class="text-gray-400">B.PT., M.PT - Providing expert physiotherapy care for your optimal health and well-being.</p>
+                    <p class="text-gray-400">B.PT., M.PT - Providing expert physiotherapy care for your optimal health
+                        and well-being.</p>
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="index.html#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="index.html#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
-                        <li><a href="index.html#reviews" class="text-gray-400 hover:text-white transition-colors">Reviews</a></li>
+                        <li><a href="index.html#home" class="text-gray-400 hover:text-white transition-colors">Home</a>
+                        </li>
+                        <li><a href="index.html#services"
+                                class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="index.html#reviews"
+                                class="text-gray-400 hover:text-white transition-colors">Reviews</a></li>
                         <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
-                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                        <li><a href="https://coreconnectionsphysiotherapy.janeapp.com/" target="_blank" class="text-gray-400 hover:text-white transition-colors">Book Online</a></li>
-                        <li><a href="https://www.instagram.com/your_physio_pratyusha/" target="_blank" class="text-gray-400 hover:text-white transition-colors">Instagram</a></li>
+                        <li><a href="index.html#contact"
+                                class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="https://coreconnectionsphysiotherapy.janeapp.com/" target="_blank"
+                                class="text-gray-400 hover:text-white transition-colors">Book Online</a></li>
+                        <li><a href="https://www.instagram.com/your_physio_pratyusha/" target="_blank"
+                                class="text-gray-400 hover:text-white transition-colors">Instagram</a></li>
                     </ul>
                 </div>
                 <div>
@@ -171,4 +208,5 @@
     </footer>
     <script src="script.js"></script>
 </body>
-</html> 
+
+</html>
