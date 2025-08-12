@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navItems = document.querySelectorAll('.nav-link, #mobile-menu a[href^="#"]');
 
     // Parallax effect for hero section
-    const heroSection = document.querySelector('#home');
+    const heroSection = document.querySelector('/');
     const heroImage = heroSection.querySelector('img');
     const heroContent = heroSection.querySelector('div:first-child');
 
