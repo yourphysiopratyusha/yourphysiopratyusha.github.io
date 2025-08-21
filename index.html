@@ -23,6 +23,7 @@
                     },
                     fontFamily: {
                         'sans': ['Inter', 'sans-serif'],
+                        'bellefair': ['Bellefair', 'serif'],
                     },
                     keyframes: {
                         'fade-in': {
@@ -37,7 +38,9 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap" rel="stylesheet">
     <style>
         .parallax {
             transform-style: preserve-3d;
@@ -78,7 +81,7 @@
     <header class="fixed w-full bg-white shadow-sm z-50">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <div class="text-2xl text-accent block font-bold">Your Physio Pratyusha</div>
+                <div class="text-3xl text-accent font-bellefair">Your Physio Pratyusha</div>
                 <!-- Navigation Links -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="/" class="nav-link hover:text-primary transition-colors">Home</a>
@@ -137,11 +140,11 @@
             <div class="container mx-auto px-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div class="parallax-content">
-                        <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
+                        <h1 class="text-4xl md:text-5xl mb-6 animate-fade-in font-bellefair">
                             Holistic Care in
                             <span class="text-accent block">Physiotherapy</span>
                         </h1>
-                        <p class="text-xl text-primary font-semibold mb-4 animate-fade-in" style="animation-delay: 0.1s">Empowering YOU to reach YOUR goals!</p>
+                        <p class="text-xl text-primary mb-4 animate-fade-in" style="animation-delay: 0.1s">Empowering YOU to reach YOUR goals!</p>
                         <p class="text-gray-600 mb-8 animate-fade-in" style="animation-delay: 0.2s">Specialized physiotherapy services including orthopedic, pelvic health, pre/postnatal care, and treatment for Ehlers-Danlos Syndrome.</p>
                         <div class="flex flex-col sm:flex-row gap-4 animate-fade-in" style="animation-delay: 0.4s">
                             <a href="https://yourphysiotherapist.janeapp.com/" target="_blank" class="inline-block px-8 py-3 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl">Book an Appointment</a>
@@ -172,14 +175,14 @@
                     <div class="w-6 h-0.5 bg-primary"></div>
                     <span class="text-primary font-medium">Our Services</span>
                 </div>
-                <h2 class="text-3xl font-bold mb-12">Specialized Physiotherapy Services</h2>
+                <h2 class="text-3xl mb-12 font-bellefair">Specialized Physiotherapy Services</h2>
                 <!-- New 4x2 grid mosaic -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div class="bg-mint-light p-6 rounded-xl shadow-lg hover:shadow-xl transition-all flex flex-col">
                         <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
                             <i class="fas fa-dumbbell text-primary text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">Orthopedic and Sports Physiotherapy</h3>
+                        <h3 class="text-xl mb-3 font-bellefair">Orthopedic and Sports Physiotherapy</h3>
                         <p class="text-gray-600 mb-4">Physiotherapy assessment and treatment for musculoskeletal and sports injuries in Kanata and Stittsville. We provide care for a wide range of conditions including sprains, strains, arthritis, and chronic pain.</p>
                         <a href="blog.html" class="text-primary hover:underline mt-auto">Learn more →</a>
                     </div>
@@ -187,7 +190,7 @@
                         <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
                             <i class="fas fa-female text-primary text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">Pelvic Floor Physiotherapy</h3>
+                        <h3 class="text-xl mb-3 font-bellefair">Pelvic Floor Physiotherapy</h3>
                         <p class="text-gray-600 mb-4">Pelvic Floor Physiotherapy for Incontinence, prolapse, and pelvic pain management in Kanata and Stittsville. Specialized care for all life stages with compassionate, individualized approach.</p>
                         <a href="blog.html" class="text-primary hover:underline mt-auto">Learn more →</a>
                     </div>
@@ -195,7 +198,7 @@
                         <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
                             <i class="fas fa-bone text-primary text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">EDS/ HSD Hypermobility Physiotherapy</h3>
+                        <h3 class="text-xl mb-3 font-bellefair">EDS/ HSD Hypermobility Physiotherapy</h3>
                         <p class="text-gray-600 mb-4">Physiotherapy for Ehlers-Danlos Syndrome and hypermobility spectrum disorders in Kanata and Stittsville. Gentle, personalized care focused on joint stability and pain reduction.</p>
                         <a href="blog.html" class="text-primary hover:underline mt-auto">Learn more →</a>
                     </div>
@@ -203,7 +206,7 @@
                         <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
                             <i class="fas fa-baby text-primary text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">Prenatal and Postnatal Physiotherapy</h3>
+                        <h3 class="text-xl mb-3 font-bellefair">Prenatal and Postnatal Physiotherapy</h3>
                         <p class="text-gray-600 mb-4">Physiotherapy for pregnancy and postpartum recovery in Kanata and Stittsville. Safe, tailored care including birth preparation and postnatal healing support.</p>
                         <a href="blog.html" class="text-primary hover:underline mt-auto">Learn more →</a>
                     </div>
@@ -211,7 +214,7 @@
                         <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
                             <i class="fas fa-user-md text-primary text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">Pessary Fitting for Prolapse and Incontinence</h3>
+                        <h3 class="text-xl mb-3 font-bellefair">Pessary Fitting for Prolapse and Incontinence</h3>
                         <p class="text-gray-600 mb-4">Pessary fitting Physiotherapy and follow-up care for prolapse and incontinence in Kanata and Stittsville. Non-surgical, effective support for pelvic health.</p>
                         <a href="blog.html" class="text-primary hover:underline mt-auto">Learn more →</a>
                     </div>
@@ -219,7 +222,7 @@
                         <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
                             <i class="fas fa-syringe text-primary text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">Dry Needling and Cupping</h3>
+                        <h3 class="text-xl mb-3 font-bellefair">Dry Needling and Cupping</h3>
                         <p class="text-gray-600 mb-4">Physiotherapy techniques using needles and cups for pain relief, scar mobilization and muscle recovery in Kanata and Stittsville.</p>
                         <a href="blog.html" class="text-primary hover:underline mt-auto">Learn more →</a>
                     </div>
@@ -227,7 +230,7 @@
                         <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
                             <i class="fas fa-lightbulb text-primary text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">Laser Therapy</h3>
+                        <h3 class="text-xl mb-3 font-bellefair">Laser Therapy</h3>
                         <p class="text-gray-600 mb-4">Physiotherapy using Non-invasive LASER treatment for pain and inflammation in Kanata and Stittsville. Gentle treatment to stimulate natural healing processes.</p>
                         <a href="blog.html" class="text-primary hover:underline mt-auto">Learn more →</a>
                     </div>
@@ -235,7 +238,7 @@
                         <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
                             <i class="fas fa-laptop text-primary text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">Virtual Physiotherapy</h3>
+                        <h3 class="text-xl mb-3 font-bellefair">Virtual Physiotherapy</h3>
                         <p class="text-gray-600 mb-4">Online physiotherapy sessions at your convenience across Ontario. Compassionate care from the comfort and safety of your own home.</p>
                         <a href="blog.html" class="text-primary hover:underline mt-auto">Learn more →</a>
                     </div>
@@ -249,7 +252,7 @@
                     <div class="w-6 h-0.5 bg-primary"></div>
                     <span class="text-primary font-medium">Testimonials</span>
                 </div>
-                <h2 class="text-3xl font-bold mb-12">What Our Clients Say</h2>
+                <h2 class="text-3xl mb-12 font-bellefair">What Our Clients Say</h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Review 1 -->
@@ -259,7 +262,7 @@
                                 <img src="https://placehold.co/50x50/009eb5/FFFFFF?text=JD" alt="Client" class="w-10 h-10 rounded-full border-2 border-white">
                             </div>
                             <div class="ml-4">
-                                <h3 class="font-semibold">John D.</h3>
+                                <h3 class="font-bellefair">John D.</h3>
                                 <div class="flex text-yellow-400">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -280,7 +283,7 @@
                                 <img src="https://placehold.co/50x50/009eb5/FFFFFF?text=SM" alt="Client" class="w-10 h-10 rounded-full border-2 border-white">
                             </div>
                             <div class="ml-4">
-                                <h3 class="font-semibold">Sarah M.</h3>
+                                <h3 class="font-bellefair">Sarah M.</h3>
                                 <div class="flex text-yellow-400">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -301,7 +304,7 @@
                                 <img src="https://placehold.co/50x50/009eb5/FFFFFF?text=AL" alt="Client" class="w-10 h-10 rounded-full border-2 border-white">
                             </div>
                             <div class="ml-4">
-                                <h3 class="font-semibold">Alex L.</h3>
+                                <h3 class="font-bellefair">Alex L.</h3>
                                 <div class="flex text-yellow-400">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -319,19 +322,19 @@
                 <!-- Review Stats -->
                 <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                     <div class="bg-mint-light p-6 rounded-xl shadow-lg">
-                        <div class="text-4xl font-bold text-primary mb-2">500+</div>
+                        <div class="text-4xl text-primary mb-2">500+</div>
                         <div class="text-gray-600">Happy Clients</div>
                     </div>
                     <div class="bg-mint-light p-6 rounded-xl shadow-lg">
-                        <div class="text-4xl font-bold text-primary mb-2">13+</div>
+                        <div class="text-4xl text-primary mb-2">13+</div>
                         <div class="text-gray-600">Years Experience</div>
                     </div>
                     <div class="bg-mint-light p-6 rounded-xl shadow-lg">
-                        <div class="text-4xl font-bold text-primary mb-2">5.0</div>
+                        <div class="text-4xl text-primary mb-2">5.0</div>
                         <div class="text-gray-600">Average Rating</div>
                     </div>
                     <div class="bg-mint-light p-6 rounded-xl shadow-lg">
-                        <div class="text-4xl font-bold text-primary mb-2">1000+</div>
+                        <div class="text-4xl text-primary mb-2">1000+</div>
                         <div class="text-gray-600">Sessions Completed</div>
                     </div>
                 </div>
@@ -344,13 +347,13 @@
                     <div class="w-6 h-0.5 bg-primary"></div>
                     <span class="text-primary font-medium">Contact</span>
                 </div>
-                <h2 class="text-3xl font-bold mb-6">We look forward to hearing from you!</h2>
+                <h2 class="text-3xl mb-6 font-bellefair">We look forward to hearing from you!</h2>
                 <div class="flex flex-col md:flex-row gap-8 max-w-6xl mx-auto mb-8">
                     <div class="bg-mint-light p-6 rounded-xl shadow-lg text-center flex-auto">
                         <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
                             <i class="fas fa-map-marker-alt text-primary text-2xl"></i>
                         </div>
-                        <h3 class="font-semibold mb-2">Clinic Address</h3>
+                        <h3 class="mb-2 font-bellefair">Clinic Address</h3>
                         <p class="text-gray-600"><strong>141 Abbeyhill Drive, Ottawa, ON</strong></p>
                         <p class="text-sm text-gray-500 mt-2">Please note that we have stairs to get into the clinic. Please let us know before your appointment if you will require any additional assistance. Free street parking available on Abbeyhill drive.</p>
                     </div>
@@ -358,7 +361,7 @@
                         <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
                             <i class="fas fa-phone text-primary text-2xl"></i>
                         </div>
-                        <h3 class="font-semibold mb-2">Phone</h3>
+                        <h3 class="mb-2 font-bellefair">Phone</h3>
                         <p class="text-gray-600"><strong>613-207-6177</strong></p>
                         <p class="text-sm text-gray-500 mt-2">Please leave a voicemail if we missed your call. We look forward to speaking with you soon!</p>
                     </div>
@@ -366,7 +369,7 @@
                         <div class="p-4 bg-primary/10 rounded-lg inline-block mb-4">
                             <i class="fas fa-envelope text-primary text-2xl"></i>
                         </div>
-                        <h3 class="font-semibold mb-2">Email</h3>
+                        <h3 class="mb-2 font-bellefair">Email</h3>
                         <p class="text-gray-600 break-words"><strong>yourphysiopratyusha@gmail.com</strong></p>
                         <p class="text-sm text-gray-500 mt-2">Feel welcome to connect with us anytime with questions!</p>
                     </div>
@@ -384,13 +387,13 @@
                     <div class="w-6 h-0.5 bg-primary"></div>
                     <span class="text-primary font-medium">Find Us</span>
                 </div>
-                <h2 class="text-3xl font-bold mb-6">Our Location</h2>
+                <h2 class="text-3xl mb-6 font-bellefair">Our Location</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div>
                         <div class="bg-white p-6 rounded-xl shadow-lg mb-4">
-                            <h3 class="text-xl font-semibold mb-2">Clinic Address</h3>
+                            <h3 class="text-xl mb-2 font-bellefair">Clinic Address</h3>
                             <p class="text-gray-700 mb-2"><strong>141 Abbeyhill Drive, Ottawa, ON</strong></p>
-                            <h3 class="text-xl font-semibold mb-2 mt-4">Phone</h3>
+                            <h3 class="text-xl mb-2 mt-4 font-bellefair">Phone</h3>
                             <p class="text-gray-700 mb-2"><strong>613-207-6177</strong></p>
                         </div>
                         <p class="text-gray-600">Conveniently located in Ottawa. Please call for detailed directions or to book your visit.</p>
@@ -406,7 +409,7 @@
 
         <section id="book" class="py-12 bg-primary">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold text-white mb-6">Ready to Start Your Recovery?</h2>
+                <h2 class="text-3xl text-white mb-6 font-bellefair">Ready to Start Your Recovery?</h2>
                 <p class="text-white/90 mb-8">Book your appointment today</p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
                     <a href="https://yourphysiotherapist.janeapp.com/" target="_blank" class="inline-block px-8 py-3 bg-white text-primary rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl">Book Appointment</a>
@@ -420,11 +423,11 @@
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Pratyusha Kavuluri</h3>
+                    <h3 class="text-xl mb-4 font-bellefair">Pratyusha Kavuluri</h3>
                     <p class="text-gray-400">B.PT., M.PT - Providing expert physiotherapy care for your optimal health and well-being.</p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <h3 class="text-xl mb-4 font-bellefair">Quick Links</h3>
                     <ul class="space-y-2">
                         <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
                         <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
@@ -438,7 +441,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Hours</h3>
+                    <h3 class="text-xl mb-4 font-bellefair">Hours</h3>
                     <p class="text-gray-400">Please contact for availability</p>
                     <p class="text-gray-400 mt-4">For appointments and inquiries:</p>
                     <p class="text-gray-400"><strong>613-207-6177</strong></p>
