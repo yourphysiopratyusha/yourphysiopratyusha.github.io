@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Mobile menu elements
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Enhanced smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
 const serviceContent = {
     'orthopedic-sports': {
         title: 'Orthopedic and Sports Physiotherapy',
-        subtitle: 'Physiotherapy assessment and treatment for musculoskeletal and sports injuries in Kanata and Stittsville',
+        subtitle: 'Physiotherapy assessment and treatment for musculoskeletal and sports injuries in Kanata and Stittsville, Ottawa',
         content: `
             <div class="prose prose-lg max-w-none text-gray-800">
                 <p>We provide care for a wide range of musculoskeletal and sports conditions.</p>
@@ -140,7 +140,7 @@ const serviceContent = {
     },
     'pelvic-floor': {
         title: 'Pelvic Floor Physiotherapy',
-        subtitle: 'Pelvic Floor Physiotherapy for Incontinence, prolapse, and pelvic pain management in Kanata and Stittsville',
+        subtitle: 'Pelvic Floor Physiotherapy for Incontinence, prolapse, and pelvic pain management in Kanata and Stittsville, Ottawa',
         content: `
             <div class="prose prose-lg max-w-none text-gray-800">
                 <p>Pelvic floor physiotherapy is a specialized area of care that focuses on assessing and treating conditions related to the muscles, joints, and connective tissues of the pelvis.</p>
@@ -183,7 +183,7 @@ const serviceContent = {
     },
     'eds-hypermobility': {
         title: 'EDS/HSD Hypermobility Physiotherapy',
-        subtitle: 'Physiotherapy for Ehlers-Danlos Syndrome and hypermobility spectrum disorders in Kanata and Stittsville',
+        subtitle: 'Physiotherapy for Ehlers-Danlos Syndrome and hypermobility spectrum disorders in Kanata and Stittsville, Ottawa',
         content: `
             <div class="prose prose-lg max-w-none text-gray-800">
                 <p>We offer physiotherapy for individuals living with Ehlers-Danlos Syndrome (EDS) and Hypermobility Spectrum Disorders (HSD), with a focus on gentle, personalized care that supports joint stability, reduces pain, and improves overall function.</p>
@@ -207,16 +207,57 @@ const serviceContent = {
                 
                 <div class="bg-mint-light p-6 rounded-lg mt-8">
                     <h3 class="text-lg font-bellefair text-primary mb-4">Supporting individuals with EDS and Hypermobility: A Physiotherapist's Perspective</h3>
+                    
                     <p>Living with Ehlers-Danlos Syndrome (EDS) or Hypermobility Spectrum Disorders (HSD) is not easy — and if you are reading this, chances are you're already aware of that.</p>
                     <p>As a physiotherapist with a special interest in hypermobility and connective tissue disorders, I have had the privilege of working closely with people navigating these conditions. I have seen firsthand how exhausting it can be to feel like your body isn't cooperating with you — the joints that give way, the muscles that always feel tight yet weak, and the constant need to explain that your pain is real, even when it doesn't show up clearly on scans.</p>
-                    <p class="font-semibold">I want you to know that I see you, and you're not alone in this!</p>
+                    <p>I want you to know that I see you, and you're not alone in this!</p>
+
+                    <h3 class="text-lg mt-6 mb-2 font-bellefair">Why Your Body Feels the Way It Does</h3>
+                    <p>With EDS and hypermobility, the collagen in your connective tissues isn't as strong or structured as it should be. This can lead to joints that move too much, muscles that work overtime to stabilize, and a nervous system that's often on high alert — which makes sense, because if your body doesn't feel stable, your brain starts working overtime to protect you.</p>
+                    
+                    <p>You might experience:</p>
+                    <ul>
+                        <li>Frequent sprains, strains, subluxations or dislocations</li>
+                        <li>Pain that moves around or lingers</li>
+                        <li>Fatigue and muscle tightness that just never seems to go away</li>
+                        <li>Dizziness or light-headedness with certain positions</li>
+                        <li>Anxiety around movement or fear of injury</li>
+                        <li>Delayed healing and sensitivity to touch or pressure</li>
+                    </ul>
+                    <p>Most of the people I see have gone through years of trying to figure out what's going on — often misdiagnosed, misunderstood, or told to "just be careful."</p>
+                    <p>But careful isn't the same as supported. And that's where physiotherapy comes in.</p>
+
+                    <h3 class="text-lg mt-6 mb-2 font-bellefair">How Physiotherapy Can Help — From Someone Who Gets It</h3>
+                    <p>My approach is gentle, tailored, and always collaborative. <strong>YOU</strong> are the expert of your body — I'm just here to help guide and support it.</p>
+
+                    <h4 class="text-base mt-4 mb-2 font-semibold">🧠 We Start with Understanding</h4>
+                    <p>First, I help you better understand how hypermobility affects your body. Together, we identify your unique patterns and talk about what's happening beneath the pain. This often includes conversations about pacing, energy conservation, and nervous system regulation — things that don't always get enough attention in traditional rehab.</p>
+
+                    <h4 class="text-base mt-4 mb-2 font-semibold">🏋️‍♀️ We Build Strength (Slowly and Safely)</h4>
+                    <p>Strength training is a cornerstone of managing hypermobility, but it must be done right. We'll start small — maybe just holding a muscle contraction or using bodyweight — and progress gently, always with your body's feedback in mind. The goal is to create more control around the joints and help your body feel safe again in movement.</p>
+
+                    <h4 class="text-base mt-4 mb-2 font-semibold">🦶 We Train Your Body's Awareness</h4>
+                    <p>Many people with EDS or HSD struggle with proprioception — your body's ability to sense where it is in space. We work on balance, joint positioning, and coordination to reduce injury risk and help you feel more grounded and confident in your movement.</p>
+
+                    <h4 class="text-base mt-4 mb-2 font-semibold">🌿 We Manage Pain Holistically</h4>
+                    <p>I use a combination of techniques like soft tissue release as needed using cupping or dry needling, breath work, and gentle joint care. We also address the nervous system — because living with chronic pain or instability often affects your whole being, not just your body.</p>
+
+                    <h4 class="text-base mt-4 mb-2 font-semibold">🧭 We Create a Life You Can Move Freely In</h4>
+                    <p>Whether your goal is to return to physical activities/sports, chase your toddler, stand or sit at work without pain, or just feel a little more in control of your body — I'm here to support you in building a movement routine that works with your body, not against it.</p>
+
+                    <h3 class="text-lg mt-6 mb-2 font-bellefair">You Deserve to Feel Supported in Your Body</h3>
+                    <p>You've probably been told to "strengthen your core" or "avoid certain movements" without a clear plan or understanding of what that means for YOU. That's not good enough — and you deserve better.</p>
+                    <p>My role as your physiotherapist is not to push you or "fix" you, but to walk beside you and offer tools, strategies, and encouragement so you can feel stronger, steadier, and more at home in your body.</p>
+                    <p>With the right approach, hypermobility doesn't have to hold you back. It just needs the right kind of support ☺</p>
+                    
+                    <p class="mt-6 font-semibold">If you're living with EDS or HSD and looking for someone who understands the nuances of your condition, I'd love to help. Let's work together to build a plan that feels right for you!</p>
                 </div>
             </div>
         `
     },
     'prenatal-postnatal': {
         title: 'Prenatal and Postnatal Physiotherapy',
-        subtitle: 'Physiotherapy for pregnancy and postpartum recovery in Kanata and Stittsville',
+        subtitle: 'Physiotherapy for pregnancy and postpartum recovery in Kanata and Stittsville, Ottawa',
         content: `
             <div class="prose prose-lg max-w-none text-gray-800">
                 <p>Pregnancy is a time of growth and anticipation—but it can also bring discomfort, pain, or anxiety about labour and delivery. Prenatal physiotherapy offers safe, tailored care to help you stay active, manage pain, and feel more prepared for childbirth.</p>
@@ -265,7 +306,7 @@ const serviceContent = {
     },
     'pessary-fitting': {
         title: 'Pessary Fitting for Prolapse and Incontinence',
-        subtitle: 'Pessary fitting Physiotherapy and follow-up care for prolapse and incontinence in Kanata and Stittsville',
+        subtitle: 'Pessary fitting Physiotherapy and follow-up care for prolapse and incontinence in Kanata and Stittsville, Ottawa',
         content: `
             <div class="prose prose-lg max-w-none text-gray-800">
                 <p>A pessary is a soft, flexible medical device inserted into the vagina to help support the bladder, uterus, or rectum. It is commonly used to manage pelvic organ prolapse, urinary incontinence, urinary urgency or incomplete bladder emptying providing a non-surgical, effective option for many individuals.</p>
@@ -289,7 +330,7 @@ const serviceContent = {
     },
     'laser-therapy': {
         title: 'Laser Therapy',
-        subtitle: 'Physiotherapy using Non-invasive LASER treatment for pain and inflammation in Kanata and Stittsville',
+        subtitle: 'Physiotherapy using Non-invasive LASER treatment for pain and inflammation in Kanata and Stittsville, Ottawa',
         content: `
             <div class="prose prose-lg max-w-none text-gray-800">
                 <p>Laser therapy is a gentle, non-invasive treatment that uses focused light energy to stimulate the body's natural healing processes. In physiotherapy, laser therapy can be an effective tool to reduce pain, inflammation, and promote tissue repair. It is often used alongside techniques and exercises to help you recover faster and move better.</p>
@@ -309,13 +350,13 @@ const serviceContent = {
                     <li>Scar healing</li>
                 </ul>
                 
-                <p class="text-lg font-semibold text-primary mt-6">Whether you're recovering from an injury or managing a chronic condition, laser therapy at our clinic in Kanata and Stittsville can be a safe and effective part of your physiotherapy plan!</p>
+                <p class="text-lg font-semibold text-primary mt-6">Whether you're recovering from an injury or managing a chronic condition, laser therapy at our clinic in Kanata and Stittsville, Ottawa can be a safe and effective part of your physiotherapy plan!</p>
             </div>
         `
     },
     'dry-needling-cupping': {
         title: 'Dry Needling and Cupping',
-        subtitle: 'Physiotherapy techniques using needles and cups for pain relief, scar mobilization and muscle recovery in Kanata and Stittsville',
+        subtitle: 'Physiotherapy techniques using needles and cups for pain relief, scar mobilization and muscle recovery in Kanata and Stittsville, Ottawa',
         content: `
             <div class="prose prose-lg max-w-none text-gray-800">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -397,7 +438,7 @@ function openServiceModal(serviceId) {
     const modal = document.getElementById('serviceModal');
     const modalTitle = document.getElementById('modalTitle');
     const modalContent = document.getElementById('modalContent');
-    
+
     const service = serviceContent[serviceId];
     if (service) {
         modalTitle.textContent = service.title;
@@ -417,7 +458,7 @@ function closeServiceModal() {
 }
 
 // Close modal when clicking outside
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     const modal = document.getElementById('serviceModal');
     if (e.target === modal) {
         closeServiceModal();
@@ -425,7 +466,7 @@ document.addEventListener('click', function(e) {
 });
 
 // Close modal with Escape key
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
         closeServiceModal();
     }
