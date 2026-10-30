@@ -1,108 +1,85 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Mobile menu elements
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-    const mobileMenuClose = document.getElementById('mobile-menu-close');
-
-    // Toggle mobile menu
-    function toggleMobileMenu(show) {
-        if (show) {
-            mobileMenu.classList.remove('translate-x-full');
-            mobileMenuOverlay.classList.remove('hidden');
-            document.body.classList.add('overflow-hidden');
-        } else {
-            mobileMenu.classList.add('translate-x-full');
-            mobileMenuOverlay.classList.add('hidden');
-            document.body.classList.remove('overflow-hidden');
-        }
+    // Mobile menu
+    const menuBtn = document.getElementById('menu-btn');
+    const nav = document.getElementById('site-nav');
+    function setMenu(open) {
+        if (!menuBtn || !nav) return;
+        nav.classList.toggle('open', open);
+        menuBtn.setAttribute('aria-expanded', String(open));
+    }
+    if (menuBtn && nav) {
+        menuBtn.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
     }
 
-    // Event listeners for mobile menu
-    mobileMenuButton.addEventListener('click', () => toggleMobileMenu(true));
-    mobileMenuClose.addEventListener('click', () => toggleMobileMenu(false));
-    mobileMenuOverlay.addEventListener('click', () => toggleMobileMenu(false));
+    // Active nav link: by page, or by section while scrolling the home page
+    const links = nav ? [...nav.querySelectorAll('a:not(.nav-book)')] : [];
+    const page = location.pathname.split('/').pop() || 'index.html';
+    if (page !== 'index.html') {
+        links.forEach(a => { if (a.getAttribute('href') === page) a.classList.add('active'); });
+    } else if (links.length) {
+        const targets = links
+            .map(a => ({ a, el: document.querySelector((a.getAttribute('href') || '').replace(/^\//, '')) }))
+            .filter(t => t.el && t.a.getAttribute('href').includes('#'));
+        const update = () => {
+            let current = null;
+            targets.forEach(t => { if (window.scrollY >= t.el.offsetTop - 140) current = t; });
+            links.forEach(a => a.classList.toggle('active', !!current && a === current.a));
+        };
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    }
 
-    // Close mobile menu when clicking a link
-    const mobileLinks = mobileMenu.querySelectorAll('a');
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => toggleMobileMenu(false));
-    });
+    // Reveal on scroll
+    const items = document.querySelectorAll('[data-reveal]');
+    if (items.length && 'IntersectionObserver' in window) {
+        items.forEach((el, i) => { el.style.transitionDelay = (i % 5) * 70 + 'ms'; });
+        const io = new IntersectionObserver(es => es.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        }), { threshold: 0.12 });
+        items.forEach(el => io.observe(el));
+    } else {
+        items.forEach(el => el.classList.add('in'));
+    }
 
-    // Enhanced smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
+    // "Is this for me?" picker
+    const list = document.getElementById('picker-list');
+    if (list) {
+        const answers = [
+            { label: 'Hypermobile, or living with EDS / HSD', tag: 'EDS / HSD Hypermobility', title: 'Gentle care for hypermobile bodies', body: "Whether you're newly diagnosed or navigating long-term symptoms, care focuses on joint stability, pain reduction and overall function, paced to your needs.", chips: ['Subluxations', 'Widespread pain', 'POTS', 'Proprioception'], cta: 'Explore hypermobility care', service: 'eds-hypermobility' },
+            { label: 'Noticing leakage, heaviness or pelvic pain', tag: 'Pelvic Floor Physiotherapy', title: 'Pelvic health, for all genders', body: 'Assessment and treatment for incontinence, prolapse and pelvic pain, with pessary fitting available. One-on-one sessions in a safe and non-judgmental space.', chips: ['Incontinence', 'Prolapse', 'Pessary fitting', 'Menopause'], cta: 'Explore pelvic health', service: 'pelvic-floor' },
+            { label: 'Pregnant or postpartum', tag: 'Prenatal & Postnatal', title: 'Support through pregnancy and after', body: "From birth preparation to postpartum recovery. Whether you're six weeks or six years postpartum, care is here to help you rebuild your strength.", chips: ['Birth prep', 'C-section recovery', 'Diastasis recti'], cta: 'See prenatal & postnatal care', service: 'prenatal-postnatal' },
+            { label: 'Dealing with an injury or ongoing pain', tag: 'Orthopedic & Sports', title: 'Get moving confidently again', body: 'Sprains, strains, arthritis, running injuries, neck and back pain, and rehab before or after surgery, for athletes of all levels.', chips: ['Sports injuries', 'Back pain', 'Post-surgical rehab'], cta: 'See orthopedic care', service: 'orthopedic-sports' },
+            { label: 'Unable to come in person', tag: 'Virtual Physiotherapy', title: 'Care from home, across Ontario', body: 'One-on-one virtual sessions for postpartum recovery, hypermobility, immunosuppressed individuals, older adults and busy professionals.', chips: ['No travel', 'Flexible scheduling'], cta: 'Learn about virtual care', service: 'virtual-physiotherapy' },
+        ];
+        const $ = id => document.getElementById(id);
+        const buttons = answers.map((a, i) => {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'opt';
+            b.innerHTML = '<span></span><span class="arr"></span>';
+            b.firstChild.textContent = a.label;
+            b.addEventListener('click', () => pick(i));
+            list.appendChild(b);
+            return b;
         });
-    });
-
-    // Add active class to navigation links based on scroll position
-    const sections = document.querySelectorAll('section');
-    const navItems = document.querySelectorAll('.nav-link, #mobile-menu a[href^="#"]');
-
-    // Parallax effect for hero section
-    const heroSection = document.querySelector('/');
-    const heroImage = heroSection.querySelector('img');
-    const heroContent = heroSection.querySelector('div:first-child');
-
-    // Intersection Observer for parallax and animations
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-fade-in');
-            }
-        });
-    }, observerOptions);
-
-    // Observe all sections for fade-in animation
-    document.querySelectorAll('section').forEach(section => {
-        section.classList.add('opacity-0', 'transition-opacity', 'duration-1000');
-        observer.observe(section);
-    });
-
-    // Parallax scroll effect
-    window.addEventListener('scroll', () => {
-        // Update active navigation
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= sectionTop - 60) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navItems.forEach(item => {
-            item.classList.remove('text-primary');
-            if (item.getAttribute('href') === `#${current}`) {
-                item.classList.add('text-primary');
-            }
-        });
-
-        // Parallax effect for hero section
-        if (heroImage && heroContent) {
-            const scrolled = window.pageYOffset;
-            heroImage.style.transform = `translateY(${scrolled * 0.1}px)`;
-            heroContent.style.transform = `translateY(${scrolled * 0.05}px)`;
+        function pick(i) {
+            const a = answers[i];
+            buttons.forEach((b, j) => {
+                b.setAttribute('aria-pressed', String(i === j));
+                b.querySelector('.arr').textContent = i === j ? '→' : '';
+            });
+            $('ans-tag').textContent = a.tag;
+            $('ans-title').textContent = a.title;
+            $('ans-body').textContent = a.body;
+            $('ans-chips').replaceChildren(...a.chips.map(c => Object.assign(document.createElement('span'), { textContent: c })));
+            const cta = $('ans-cta');
+            cta.textContent = a.cta + ' →';
+            cta.onclick = () => openServiceModal(a.service);
         }
-    });
+        pick(0);
+    }
 });
 
 // Service content data extracted from blog.html
@@ -446,21 +423,22 @@ function openServiceModal(serviceId) {
             <div class="mb-6 text-gray-500">${service.subtitle}</div>
             ${service.content}
         `;
-        modal.classList.remove('hidden');
+        modal.hidden = false;
         document.body.classList.add('overflow-hidden');
     }
 }
 
 function closeServiceModal() {
     const modal = document.getElementById('serviceModal');
-    modal.classList.add('hidden');
+    if (!modal) return;
+    modal.hidden = true;
     document.body.classList.remove('overflow-hidden');
 }
 
 // Close modal when clicking outside
 document.addEventListener('click', function (e) {
     const modal = document.getElementById('serviceModal');
-    if (e.target === modal) {
+    if (modal && e.target === modal) {
         closeServiceModal();
     }
 });

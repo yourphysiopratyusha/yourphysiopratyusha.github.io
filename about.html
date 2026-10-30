@@ -9,13 +9,10 @@
         content="Learn about Pratyusha Kavuluri, an experienced physiotherapist specializing in Pelvic Health, Orthopedics, and EDS/HSD Hypermobility in the Kanata, Stittsville, and Ottawa area.">
     <meta name="keywords"
         content="Pratyusha Kavuluri, Physiotherapist, Ottawa, Kanata, Stittsville, Pelvic Floor, EDS, Hypermobility, Sports Physiotherapy">
+    <link rel="icon" type="image/svg+xml" href="favicons/favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -37,15 +34,16 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#009eb5',
-                        accent: '#1e40af',
-                        mint: '#e0fff5', // pastel mint
-                        'mint-light': '#f5fffa', // pastel mint light
-                        'mint-dark': '#c8ffe8', // pastel mint dark
+                        gray: { 100: '#f3e9ec', 200: '#e3d3d9', 300: '#cdb9c2', 400: '#dccbd3', 500: '#6b4f63', 600: '#5b4558', 700: '#463048', 800: '#2a1b2d', 900: '#1d1220' },
+                        primary: '#3f2340',
+                        accent: '#a24a33',
+                        mint: '#fffcfa', // warm white
+                        'mint-light': '#f7ece9', // blush
+                        'mint-dark': '#efe3e0', // blush dark
                     },
                     fontFamily: {
-                        'sans': ['Inter', 'sans-serif'],
-                        'bellefair': ['Bellefair', 'serif'],
+                        'sans': ['Figtree', 'sans-serif'],
+                        'bellefair': ['DM Serif Display', 'serif'],
                     },
                     keyframes: {
                         'fade-in': {
@@ -74,63 +72,30 @@
             transform: translateZ(-1px);
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
 </head>
 
-<body class="bg-mint font-sans text-gray-800">
-    <header class="fixed w-full bg-white shadow-sm z-50">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="text-2xl text-accent block font-bellefair">Your Physio Pratyusha</div>
-                <!-- Navigation Links -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="/" class="nav-link hover:text-primary transition-colors">Home</a>
-                    <a href="/#services" class="nav-link hover:text-primary transition-colors">Services</a>
-                    <a href="/#reviews" class="nav-link hover:text-primary transition-colors">Reviews</a>
-                    <a href="about.html" class="nav-link hover:text-primary transition-colors">Meet Your Physio</a>
-                    <a href="/#contact" class="nav-link hover:text-primary transition-colors">Contact</a>
-                    <a href="/#findus" class="nav-link hover:text-primary transition-colors">Find Us</a>
-                    <a href="blog.html" class="nav-link hover:text-primary transition-colors font-semibold">Blog</a>
-                    <a href="https://yourphysiotherapist.janeapp.com/" target="_blank"
-                        class="book-btn bg-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-all">
-                        Book Now
-                    </a>
-                </div>
-                <!-- Mobile menu button -->
-                <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-            <!-- Mobile menu overlay -->
-            <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
-            <!-- Mobile menu panel -->
-            <div id="mobile-menu"
-                class="fixed inset-y-0 right-0 w-64 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
-                <div class="p-6">
-                    <button id="mobile-menu-close" class="absolute top-4 right-4 text-gray-600 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                    <div class="mt-8 flex flex-col space-y-6">
-                        <a href="/" class="text-xl hover:text-primary transition-colors">Home</a>
-                        <a href="/#services" class="text-xl hover:text-primary transition-colors">Services</a>
-                        <a href="/#reviews" class="text-xl hover:text-primary transition-colors">Reviews</a>
-                        <a href="about.html" class="text-xl hover:text-primary transition-colors">Meet Your Physio</a>
-                        <a href="/#contact" class="text-xl hover:text-primary transition-colors">Contact</a>
-                        <a href="https://yourphysiotherapist.janeapp.com/" target="_blank"
-                            class="bg-primary text-white px-6 py-2 rounded-full text-center hover:bg-opacity-90 transition-all">
-                            Book Now
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <main class="pt-24 pb-12">
+<body class="font-sans text-gray-800">
+    <div class="topbar"><div class="wrap"><span>In-clinic in Ottawa · Virtual physiotherapy anywhere in Ontario</span><a href="tel:+16132076177">613-207-6177</a></div></div>
+    <div class="site-head-wrap"><header class="site-head">
+        <div class="wrap">
+            <a href="/" class="brand" aria-label="Your Physio Pratyusha, home"><img src="images/sprout-mark-light.svg" alt=""><span class="brand-text"><span class="brand-name">Your Physio Pratyusha</span><span class="brand-sub">Kanata · Stittsville · Ottawa</span></span></a>
+            <nav class="nav" id="site-nav" aria-label="Main">
+                <a href="/#for-me">Is this for me?</a>
+                <a href="/#services">Services</a>
+                <a href="about.html">About</a>
+                <a href="blog.html">Blog</a>
+                <a href="/#visit">Visit</a>
+                <a href="https://yourphysiotherapist.janeapp.com/" target="_blank" rel="noopener" class="nav-book">Book now</a>
+            </nav>
+            <a href="https://yourphysiotherapist.janeapp.com/" target="_blank" rel="noopener" class="btn btn-sm head-book">Book now</a>
+            <button class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        </div>
+    </header></div>
+    <main class="pb-12">
         <section class="py-12 bg-mint">
             <div class="container mx-auto px-6">
                 <div class="flex items-center gap-2 mb-2">
@@ -210,43 +175,29 @@
             </div>
         </section>
     </main>
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+    <footer class="site-foot">
+        <div class="wrap">
+            <div class="foot-grid">
                 <div>
-                    <h3 class="text-xl mb-4 font-bellefair">Pratyusha Kavuluri</h3>
-                    <p class="text-gray-400">B.PT., M.PT - Providing holistic physiotherapy care for your optimal health
-                        and well-being.</p>
+                    <div class="foot-brand"><img src="images/sprout-mark-dark.svg" alt=""><span>Your Physio Pratyusha</span></div>
+                    <p>Pratyusha Kavuluri, B.PT., M.PT. Providing holistic physiotherapy care for your optimal health and well-being.</p>
                 </div>
                 <div>
-                    <h3 class="text-xl mb-4 font-bellefair">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a>
-                        </li>
-                        <li><a href="/#services" class="text-gray-400 hover:text-white transition-colors">Services</a>
-                        </li>
-                        <li><a href="/#reviews" class="text-gray-400 hover:text-white transition-colors">Reviews</a>
-                        </li>
-                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">Meet Your
-                                Physio</a></li>
-                        <li><a href="/#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a>
-                        </li>
-                        <li><a href="https://yourphysiotherapist.janeapp.com/" target="_blank"
-                                class="text-gray-400 hover:text-white transition-colors">Book Online</a></li>
-                        <li><a href="https://www.instagram.com/your_physio_pratyusha/" target="_blank"
-                                class="text-gray-400 hover:text-white transition-colors">Instagram</a></li>
-                    </ul>
+                    <h2>Find us</h2>
+                    <span>141 Abbeyhill Drive<br>Ottawa, ON</span>
+                    <a href="tel:+16132076177">613-207-6177</a>
+                    <a href="mailto:yourphysiopratyusha@gmail.com">yourphysiopratyusha@gmail.com</a>
                 </div>
                 <div>
-                    <h3 class="text-xl mb-4 font-bellefair">Hours</h3>
-                    <p class="text-gray-400">Please contact for availability</p>
-                    <p class="text-gray-400 mt-4">For appointments and inquiries:</p>
-                    <p class="text-gray-400">613-207-6177</p>
+                    <h2>Links</h2>
+                    <a href="/#services">Services</a>
+                    <a href="about.html">Meet your physio</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="https://yourphysiotherapist.janeapp.com/" target="_blank" rel="noopener">Book online</a>
+                    <a href="https://www.instagram.com/your_physio_pratyusha/" target="_blank" rel="noopener">Instagram</a>
                 </div>
             </div>
-            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
-                <p>&copy; 2026 Your Physio Pratyusha. All rights reserved.</p>
-            </div>
+            <p class="fine">Information on this site is general and educational and is not a diagnosis or medical advice. Please speak with a qualified healthcare provider about your own situation. &copy; 2026 Your Physio Pratyusha.</p>
         </div>
     </footer>
     <script src="script.js"></script>
